@@ -2,19 +2,17 @@
 
 Simulated machine event logs: each record has a timestamp and an event type
 (0..31). The goal is to answer "how many events of type X between time A
-and B?" quickly:
+and B?" quickly (this combined query is not built yet):
 
 - a **PGM-index** turns times A and B into record positions (phase 2),
 - a **wavelet tree** counts type X between those positions (phase 1).
-
-The combined query is not built yet.
 
 ## Layout
 
 - `common/gen.h` - seeded generator: event types come in runs, timestamps
   are bursty (busy periods, quiet periods, rare long downtime).
 - `phase1/` - bit vector with rank/select, and the wavelet tree.
-- `phase2/` - PGM-index (not started).
+- `phase2/` - PGM-index over sorted timestamps.
 
 ## Phase 1: wavelet tree
 
@@ -28,3 +26,13 @@ Run these from inside `phase1/` (needs gcc, Linux/WSL):
 Operations: `access(i)`, `rank(c, i)` (c's in [0, i)), `select(c, k)`
 (position of the k-th c, k starts at 1, -1 if missing), `count(c, l, r)`.
 Positions start at 0. Binaries go to `phase1/build/`.
+
+## Phase 2: PGM-index
+
+Run these from inside `phase2/`:
+
+    make test    # lookups vs plain binary search, eps = 4, 16, 64 (ASan + UBSan)
+    make bench   # lookup time, index memory and segment count vs binary
+                 # search: evenly spaced, random uniform, bursty; n = 1e6, 1e7
+
+`lookup(q)` returns the position of the first key >= q (n if none).
