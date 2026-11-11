@@ -76,8 +76,16 @@ static void check(const uint8_t *a, size_t n, int sigma, uint64_t *s, const char
         size_t cnt = 0;
         for (size_t j = l; j < r; j++)
             cnt += a[j] == c;
-        /* count has three arguments; on failure we print c and l */
-        expect(wt_count(root, c, l, r) == cnt, name, "count", c, (long)l);
+        /* count has three arguments, more than expect() prints, so it
+         * reports its own failure with the full input and both answers */
+        size_t got = wt_count(root, c, l, r);
+        checks++;
+        if (got != cnt) {
+            failures++;
+            if (failures <= 20)
+                printf("FAIL: %s count(%d, %zu, %zu) expected=%zu got=%zu\n",
+                       name, c, l, r, cnt, got);
+        }
     }
 
     wt_free(root);
