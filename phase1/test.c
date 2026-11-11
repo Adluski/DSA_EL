@@ -86,6 +86,26 @@ static void check(const uint8_t *a, size_t n, int sigma, uint64_t *s, const char
                 printf("FAIL: %s count(%d, %zu, %zu) expected=%zu got=%zu\n",
                        name, c, l, r, cnt, got);
         }
+
+        /* range_count over the same [l, r) with four type ranges:
+         * random (x > y happens, and y = sigma is past the alphabet),
+         * a single type x = y, the full alphabet, and x > y on purpose */
+        int xy[4][2] = {{(int)rng_below(s, (uint64_t)sigma + 1), (int)rng_below(s, (uint64_t)sigma + 1)},
+                        {c, c}, {0, sigma - 1}, {c + 1, c}};
+        for (int t = 0; t < 4; t++) {
+            int x = xy[t][0], y = xy[t][1];
+            size_t want = 0;
+            for (size_t j = l; j < r; j++)
+                want += a[j] >= x && a[j] <= y;
+            got = wt_range_count(root, x, y, l, r);
+            checks++;
+            if (got != want) {
+                failures++;
+                if (failures <= 20)
+                    printf("FAIL: %s range_count(%d, %d, %zu, %zu) expected=%zu got=%zu\n",
+                           name, x, y, l, r, want, got);
+            }
+        }
     }
 
     wt_free(root);

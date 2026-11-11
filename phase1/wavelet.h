@@ -153,6 +153,23 @@ static inline size_t wt_count(const WtNode *root, int c, size_t l, size_t r)
     return wt_rank(root, c, r) - wt_rank(root, c, l);
 }
 
+/* Number of positions in [l, r) whose symbol is in x..y (0 if x > y).
+ * [l, r) are positions inside this node. A node whose symbols are all outside
+ * x..y adds nothing, and one whose symbols are all inside adds r - l without
+ * going further down. Otherwise split [l, r) into the part that went left
+ * (counted by rank of 0s) and the part that went right (rank of 1s).
+ * A leaf is always fully inside or fully outside, so it never splits. */
+static inline size_t wt_range_count(const WtNode *node, int x, int y, size_t l, size_t r)
+{
+    if (x > y || l >= r || y < node->lo || x > node->hi)
+        return 0;
+    if (x <= node->lo && node->hi <= y)
+        return r - l;
+    size_t l0 = bv_rank(&node->bv, 0, l), r0 = bv_rank(&node->bv, 0, r);
+    return wt_range_count(node->left, x, y, l0, r0)
+         + wt_range_count(node->right, x, y, l - l0, r - r0);
+}
+
 /* Total memory of the tree in bytes: node structs + bit words + count arrays. */
 static inline size_t wt_bytes(const WtNode *node)
 {
