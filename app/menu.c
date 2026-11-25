@@ -29,15 +29,15 @@ static int by_time(const void *a, const void *b)
 }
 
 /* One line without its newline (a too-long line is read to its end). 0 at end of input. */
-static int read_line(char *buf, size_t size)
+static int read_line(FILE *in, char *buf, size_t size)
 {
-    if (!fgets(buf, (int)size, stdin))
+    if (!fgets(buf, (int)size, in))
         return 0;
-    size_t len = strlen(buf);
-    if (len && buf[len - 1] == '\n')
-        buf[len - 1] = '\0';
+    size_t len = strcspn(buf, "\r\n");
+    if (buf[len])
+        buf[len] = '\0';
     else
-        for (int c; (c = getchar()) != '\n' && c != EOF;)
+        for (int c; (c = getc(in)) != '\n' && c != EOF;)
             ;
     return 1;
 }
@@ -62,7 +62,7 @@ static int ask(const char *what, uint64_t lo, uint64_t hi, uint64_t *v)
     char buf[128];
     for (;;) {
         printf(HEAD "  %s" OFF DIM " [%" PRIu64 "..%" PRIu64 "]" OFF ": ", what, lo, hi);
-        if (!read_line(buf, sizeof buf))
+        if (!read_line(stdin, buf, sizeof buf))
             return 0;
         const char *s = buf;
         if (parse_u64(&s, v) && strspn(s, " \t") == strlen(s) && *v >= lo && *v <= hi)
@@ -86,6 +86,46 @@ static int reset(Data *d, size_t n)
     return 0;
 }
 
+/* Read "time type" lines until end of input (or an empty line when typing)
+ * and load them sorted by time. Blank lines and # comments are skipped. */
+static void read_records(Data *d, FILE *in, int typing)
+{
+    char buf[256];
+    Rec *r = NULL;
+    size_t n = 0, cap = 0, bad = 0;
+    while (n < MAXN && (!typing || printf("  > ")) && read_line(in, buf, sizeof buf)) {
+        const char *s = buf + strspn(buf, " \t");
+        uint64_t t, ty;
+        if (!*s && typing)
+            break;
+        if (!*s || *s == '#')
+            continue;
+        if (!parse_u64(&s, &t) || !parse_u64(&s, &ty) || ty >= SIGMA || strspn(s, " \t") != strlen(s)) {
+            if (typing)
+                printf(BAD "  Skipped: need two numbers, type 0..31.\n" OFF);
+            bad++;
+            continue;
+        }
+        if (n == cap) {
+            Rec *g = realloc(r, (cap = cap ? 2 * cap : 256) * sizeof *r);
+            if (!g)
+                break;
+            r = g;
+        }
+        r[n++] = (Rec){t, (uint8_t)ty};
+    }
+    if (bad && !typing)
+        printf(BAD "  Skipped %zu bad lines.\n" OFF, bad);
+    if (n && reset(d, n)) {
+        qsort(r, n, sizeof *r, by_time);
+        for (size_t i = 0; i < n; i++)
+            d->ts[i] = r[i].t, d->ty[i] = r[i].ty;
+    } else if (!n) {
+        printf(BAD "  No records read; old data kept.\n" OFF);
+    }
+    free(r);
+}
+
 int main(void)
 {
     Data d = {0};
@@ -104,39 +144,27 @@ int main(void)
                "  3  Show records (first 30)\n"
                "  4  Count types X..Y in time [A, B]\n"
                "  5  First event of type X at or after time A\n"
+               "  6  Load records from a file\n"
                "  0  Quit\n\n", d.n);
-        if (!ask("Choice", 0, 5, &c) || c == 0)
+        if (!ask("Choice", 0, 6, &c) || c == 0)
             break;
-        if (c >= 3 && !d.n) {
-            printf(BAD "  No records yet: use 1 or 2 first.\n" OFF);
+        if (c >= 3 && c <= 5 && !d.n) {
+            printf(BAD "  No records yet: use 1, 2 or 6 first.\n" OFF);
         } else if (c == 1) {
             printf("  One record per line: " HEAD "time type" OFF " (type 0..31). "
                    "Empty line to finish.\n");
-            Rec *r = NULL;
-            size_t n = 0;
-            while (n < MAXN && printf("  > ") &&
-                   read_line(buf, sizeof buf) && buf[strspn(buf, " \t")]) {
-                const char *s = buf;
-                uint64_t t, ty;
-                if (!parse_u64(&s, &t) || !parse_u64(&s, &ty) || ty >= SIGMA ||
-                    strspn(s, " \t") != strlen(s)) {
-                    printf(BAD "  Skipped: need two numbers, type 0..31.\n" OFF);
-                    continue;
-                }
-                Rec *g = realloc(r, (n + 1) * sizeof *r);
-                if (!g)
-                    break;
-                r = g;
-                r[n++] = (Rec){t, (uint8_t)ty};
+            read_records(&d, stdin, 1);
+        } else if (c == 6) {
+            printf("  File with one " HEAD "time type" OFF " per line: ");
+            if (!read_line(stdin, buf, sizeof buf))
+                break;
+            FILE *f = fopen(buf, "r");
+            if (!f) {
+                printf(BAD "  Cannot open \"%s\".\n" OFF, buf);
+            } else {
+                read_records(&d, f, 0);
+                fclose(f);
             }
-            if (n && reset(&d, n)) {
-                qsort(r, n, sizeof *r, by_time);
-                for (size_t i = 0; i < n; i++)
-                    d.ts[i] = r[i].t, d.ty[i] = r[i].ty;
-            } else if (!n) {
-                printf(BAD "  No records entered; old data kept.\n" OFF);
-            }
-            free(r);
         } else if (c == 2) {
             if (ask("N", 1, MAXN, &v) && ask("Seed", 0, UINT64_MAX, &a) && reset(&d, v))
                 gen_events(v, a, d.ty, d.ts);
@@ -172,7 +200,7 @@ int main(void)
             printf(OK "  Loaded %zu records, index built (PGM eps=%d + wavelet tree).\n" OFF, d.n, EPS);
         }
         printf(DIM "\n  Press Enter to go back to the menu..." OFF);
-        if (!read_line(buf, sizeof buf))
+        if (!read_line(stdin, buf, sizeof buf))
             break;
     }
     if (d.n)

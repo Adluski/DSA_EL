@@ -1,0 +1,33 @@
+# type	count	template
+0	721	generating core.<*>
+1	208	iar <*> dear <*>
+2	121	<*> floating point alignment exceptions
+3	109	<*> double-hummer alignment exceptions
+4	92	CE sym <*>, at <*>, mask <*>
+5	71	<*> total interrupts. 0 critical input interrupts. <*> microseconds total spent on critical input interrupts, <*> microseconds max time in a critical input interrupt.
+6	60	data TLB error interrupt
+7	51	<*> microseconds spent in the rbs signal handler during <*> calls. <*> microseconds was the maximum time for a single instance of a correctable ddr.
+8	42	instruction cache parity error corrected
+9	35	idoproxydb hit ASSERT condition: ASSERT expression=0 Source file=idotransportmgr.cpp Source line=<*> Function=int IdoTransportMgr::SendPacket(IdoUdpMgr*, BglCtlPavTrace*)
+10	30	ciod: generated <*> core files for program <*>
+11	30	data storage interrupt
+12	21	ciod: Error loading <*>: invalid or missing program image, No such file or directory
+13	21	instruction address: <*>
+14	19	ciod: Error loading /<*>: invalid or missing program image, Permission denied
+15	18	<*> ddr errors(s) detected and corrected on rank <*>, symbol <*>, bit <*>
+16	18	ciod: LOGIN chdir(<*>) failed: No such file or directory
+17	17	ciod: Error loading /<*>: invalid or missing program image, Exec format error
+18	16	ciod: Received signal <*>, code=<*>, errno=<*>, address=<*>
+19	13	total of <*> ddr error(s) detected and corrected
+20	9	Kernel detected <*> integer alignment exceptions (<*>) iar <*>, dear <*> (<*>) iar <*>, dear <*> (<*>) iar <*>, dear <*> (<*>) iar <*>, dear <*> (<*>) iar <*>, dear <*> (<*>) iar <*>, dear <*> (<*>) iar <*>, dear <*> (<*>) iar <*>, dear <*>
+21	9	Lustre mount FAILED : bglio<*> : point <*>
+22	9	Node card VPD check: U<*> node in processor card slot J<*> do not match. VPD ecid <*>, found <*>
+23	9	ciod: Error reading message prefix after LOAD_MESSAGE on CioStream socket to <*>:<*>: Link has been severed
+24	8	ciod: Error reading message prefix on CioStream socket to <*>:<*>, Link has been severed
+25	8	data address: <*>
+26	8	program interrupt: illegal instruction......<*>
+27	7	<*> ddr error(s) detected and corrected on rank <*>, symbol <*> over <*> seconds
+28	7	MACHINE CHECK DCR read timeout (mc=<*> iar <*> lr <*>)
+29	7	core configuration register: <*>
+30	6	Can not get assembly information for node card
+31	200	other (89 less frequent templates)

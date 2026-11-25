@@ -36,3 +36,21 @@ Operations: `access(i)`, `rank(c, i)` (c's in [0, i)), `select(c, k)`
 
 `count_in_time(type, A, B)`, `count_types_in_time(x, y, A, B)`,
 `first_after(type, A)`. Time ranges include both A and B.
+
+## Real data (Loghub BGL 2k sample)
+
+Source: BGL 2k sample from Loghub,
+https://raw.githubusercontent.com/logpai/loghub/master/BGL/BGL_2k.log_structured.csv
+(saved as `data/loghub/BGL_2k.log_structured.csv`).
+
+    gcc -std=c11 -Wall -Wextra -O2 -o tools/build/loghub_convert tools/loghub_convert.c
+    tools/build/loghub_convert data/loghub/BGL_2k.log_structured.csv \
+        data/loghub/bgl_records.txt data/loghub/bgl_types.txt
+
+Each line becomes one record `time type`: time = the Unix `Timestamp` (seconds),
+type = its `EventTemplate`; the 31 most frequent templates are types 0..30,
+all others are type 31 ("other"). `bgl_types.txt` lists type -> count, template.
+Load `bgl_records.txt` with option 6 in `app/menu` or "Load file" in `app/gui`.
+
+Citation: Zhu, J., et al. (2023). Loghub: A Large Collection of System Log
+Datasets for AI-driven Log Analytics. ISSRE.
