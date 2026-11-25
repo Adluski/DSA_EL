@@ -1,0 +1,23 @@
+make: Entering directory '/home/adit/projects/DSA_EL/phase1'
+gcc -std=c11 -Wall -Wextra -O2 -mpopcnt -o build/bench bench.c
+./build/bench
+n         method             memory(B)  B/symbol  rank ns/q  count ns/q   queries
+100000    wavelet tree           96936      0.97       36.4        50.5   1000000
+100000    brute scan            100000      1.00    68896.0     32981.6     20000
+100000    position lists        400264      4.00      114.3       215.6   1000000
+answers of wavelet tree and position lists match
+
+1000000   wavelet tree          940704      0.94       52.1        75.1   1000000
+1000000   brute scan           1000000      1.00   751686.5    380201.5      2000
+1000000   position lists       4000264      4.00      181.2       383.6   1000000
+answers of wavelet tree and position lists match
+
+10000000  wavelet tree         9378192      0.94      185.6       411.0   1000000
+10000000  brute scan          10000000      1.00  7850131.0   3863790.4       200
+10000000  position lists      40000264      4.00      452.1       909.8   1000000
+answers of wavelet tree and position lists match
+
+note: position lists cannot answer access(i) on their own; to do that they
+      would also need the raw array (+1 B/symbol). The wavelet tree can.
+checksum 693345846550
+make: Leaving directory '/home/adit/projects/DSA_EL/phase1'

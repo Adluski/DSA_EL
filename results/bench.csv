@@ -1,0 +1,194 @@
+phase,dataset,n,method,eps,metric,value
+phase1,gen_events sigma=32,100000,wavelet tree,,memory_bytes,96936
+phase1,gen_events sigma=32,100000,wavelet tree,,bytes_per_symbol,0.97
+phase1,gen_events sigma=32,100000,wavelet tree,,rank_ns_per_query,36.4
+phase1,gen_events sigma=32,100000,wavelet tree,,count_ns_per_query,50.5
+phase1,gen_events sigma=32,100000,wavelet tree,,queries,1000000
+phase1,gen_events sigma=32,100000,brute scan,,memory_bytes,100000
+phase1,gen_events sigma=32,100000,brute scan,,bytes_per_symbol,1.00
+phase1,gen_events sigma=32,100000,brute scan,,rank_ns_per_query,68896.0
+phase1,gen_events sigma=32,100000,brute scan,,count_ns_per_query,32981.6
+phase1,gen_events sigma=32,100000,brute scan,,queries,20000
+phase1,gen_events sigma=32,100000,position lists,,memory_bytes,400264
+phase1,gen_events sigma=32,100000,position lists,,bytes_per_symbol,4.00
+phase1,gen_events sigma=32,100000,position lists,,rank_ns_per_query,114.3
+phase1,gen_events sigma=32,100000,position lists,,count_ns_per_query,215.6
+phase1,gen_events sigma=32,100000,position lists,,queries,1000000
+phase1,gen_events sigma=32,1000000,wavelet tree,,memory_bytes,940704
+phase1,gen_events sigma=32,1000000,wavelet tree,,bytes_per_symbol,0.94
+phase1,gen_events sigma=32,1000000,wavelet tree,,rank_ns_per_query,52.1
+phase1,gen_events sigma=32,1000000,wavelet tree,,count_ns_per_query,75.1
+phase1,gen_events sigma=32,1000000,wavelet tree,,queries,1000000
+phase1,gen_events sigma=32,1000000,brute scan,,memory_bytes,1000000
+phase1,gen_events sigma=32,1000000,brute scan,,bytes_per_symbol,1.00
+phase1,gen_events sigma=32,1000000,brute scan,,rank_ns_per_query,751686.5
+phase1,gen_events sigma=32,1000000,brute scan,,count_ns_per_query,380201.5
+phase1,gen_events sigma=32,1000000,brute scan,,queries,2000
+phase1,gen_events sigma=32,1000000,position lists,,memory_bytes,4000264
+phase1,gen_events sigma=32,1000000,position lists,,bytes_per_symbol,4.00
+phase1,gen_events sigma=32,1000000,position lists,,rank_ns_per_query,181.2
+phase1,gen_events sigma=32,1000000,position lists,,count_ns_per_query,383.6
+phase1,gen_events sigma=32,1000000,position lists,,queries,1000000
+phase1,gen_events sigma=32,10000000,wavelet tree,,memory_bytes,9378192
+phase1,gen_events sigma=32,10000000,wavelet tree,,bytes_per_symbol,0.94
+phase1,gen_events sigma=32,10000000,wavelet tree,,rank_ns_per_query,185.6
+phase1,gen_events sigma=32,10000000,wavelet tree,,count_ns_per_query,411.0
+phase1,gen_events sigma=32,10000000,wavelet tree,,queries,1000000
+phase1,gen_events sigma=32,10000000,brute scan,,memory_bytes,10000000
+phase1,gen_events sigma=32,10000000,brute scan,,bytes_per_symbol,1.00
+phase1,gen_events sigma=32,10000000,brute scan,,rank_ns_per_query,7850131.0
+phase1,gen_events sigma=32,10000000,brute scan,,count_ns_per_query,3863790.4
+phase1,gen_events sigma=32,10000000,brute scan,,queries,200
+phase1,gen_events sigma=32,10000000,position lists,,memory_bytes,40000264
+phase1,gen_events sigma=32,10000000,position lists,,bytes_per_symbol,4.00
+phase1,gen_events sigma=32,10000000,position lists,,rank_ns_per_query,452.1
+phase1,gen_events sigma=32,10000000,position lists,,count_ns_per_query,909.8
+phase1,gen_events sigma=32,10000000,position lists,,queries,1000000
+phase2,evenly spaced,1000000,binary search,,index_bytes,0
+phase2,evenly spaced,1000000,binary search,,keys_bytes,8000000
+phase2,evenly spaced,1000000,binary search,,ns_per_lookup,168.5
+phase2,evenly spaced,1000000,PGM,4,segments,1
+phase2,evenly spaced,1000000,PGM,4,levels,1
+phase2,evenly spaced,1000000,PGM,4,index_bytes,1080
+phase2,evenly spaced,1000000,PGM,4,keys_bytes,8000000
+phase2,evenly spaced,1000000,PGM,4,ns_per_lookup,15.6
+phase2,evenly spaced,1000000,PGM,16,segments,1
+phase2,evenly spaced,1000000,PGM,16,levels,1
+phase2,evenly spaced,1000000,PGM,16,index_bytes,1080
+phase2,evenly spaced,1000000,PGM,16,keys_bytes,8000000
+phase2,evenly spaced,1000000,PGM,16,ns_per_lookup,17.8
+phase2,evenly spaced,1000000,PGM,64,segments,1
+phase2,evenly spaced,1000000,PGM,64,levels,1
+phase2,evenly spaced,1000000,PGM,64,index_bytes,1080
+phase2,evenly spaced,1000000,PGM,64,keys_bytes,8000000
+phase2,evenly spaced,1000000,PGM,64,ns_per_lookup,19.0
+phase2,random uniform,1000000,binary search,,index_bytes,0
+phase2,random uniform,1000000,binary search,,keys_bytes,8000000
+phase2,random uniform,1000000,binary search,,ns_per_lookup,201.3
+phase2,random uniform,1000000,PGM,4,segments,17792
+phase2,random uniform,1000000,PGM,4,levels,3
+phase2,random uniform,1000000,PGM,4,index_bytes,430632
+phase2,random uniform,1000000,PGM,4,keys_bytes,8000000
+phase2,random uniform,1000000,PGM,4,ns_per_lookup,143.0
+phase2,random uniform,1000000,PGM,16,segments,1411
+phase2,random uniform,1000000,PGM,16,levels,2
+phase2,random uniform,1000000,PGM,16,index_bytes,34944
+phase2,random uniform,1000000,PGM,16,keys_bytes,8000000
+phase2,random uniform,1000000,PGM,16,ns_per_lookup,104.8
+phase2,random uniform,1000000,PGM,64,segments,92
+phase2,random uniform,1000000,PGM,64,levels,2
+phase2,random uniform,1000000,PGM,64,index_bytes,3288
+phase2,random uniform,1000000,PGM,64,keys_bytes,8000000
+phase2,random uniform,1000000,PGM,64,ns_per_lookup,134.0
+phase2,bursty,1000000,binary search,,index_bytes,0
+phase2,bursty,1000000,binary search,,keys_bytes,8000000
+phase2,bursty,1000000,binary search,,ns_per_lookup,293.8
+phase2,bursty,1000000,PGM,4,segments,6775
+phase2,bursty,1000000,PGM,4,levels,4
+phase2,bursty,1000000,PGM,4,index_bytes,172128
+phase2,bursty,1000000,PGM,4,keys_bytes,8000000
+phase2,bursty,1000000,PGM,4,ns_per_lookup,232.3
+phase2,bursty,1000000,PGM,16,segments,2072
+phase2,bursty,1000000,PGM,16,levels,3
+phase2,bursty,1000000,PGM,16,index_bytes,51384
+phase2,bursty,1000000,PGM,16,keys_bytes,8000000
+phase2,bursty,1000000,PGM,16,ns_per_lookup,235.8
+phase2,bursty,1000000,PGM,64,segments,1613
+phase2,bursty,1000000,PGM,64,levels,2
+phase2,bursty,1000000,PGM,64,index_bytes,39792
+phase2,bursty,1000000,PGM,64,keys_bytes,8000000
+phase2,bursty,1000000,PGM,64,ns_per_lookup,223.2
+phase2,evenly spaced,10000000,binary search,,index_bytes,0
+phase2,evenly spaced,10000000,binary search,,keys_bytes,80000000
+phase2,evenly spaced,10000000,binary search,,ns_per_lookup,656.2
+phase2,evenly spaced,10000000,PGM,4,segments,1
+phase2,evenly spaced,10000000,PGM,4,levels,1
+phase2,evenly spaced,10000000,PGM,4,index_bytes,1080
+phase2,evenly spaced,10000000,PGM,4,keys_bytes,80000000
+phase2,evenly spaced,10000000,PGM,4,ns_per_lookup,72.5
+phase2,evenly spaced,10000000,PGM,16,segments,1
+phase2,evenly spaced,10000000,PGM,16,levels,1
+phase2,evenly spaced,10000000,PGM,16,index_bytes,1080
+phase2,evenly spaced,10000000,PGM,16,keys_bytes,80000000
+phase2,evenly spaced,10000000,PGM,16,ns_per_lookup,78.0
+phase2,evenly spaced,10000000,PGM,64,segments,1
+phase2,evenly spaced,10000000,PGM,64,levels,1
+phase2,evenly spaced,10000000,PGM,64,index_bytes,1080
+phase2,evenly spaced,10000000,PGM,64,keys_bytes,80000000
+phase2,evenly spaced,10000000,PGM,64,ns_per_lookup,119.4
+phase2,random uniform,10000000,binary search,,index_bytes,0
+phase2,random uniform,10000000,binary search,,keys_bytes,80000000
+phase2,random uniform,10000000,binary search,,ns_per_lookup,708.7
+phase2,random uniform,10000000,PGM,4,segments,179079
+phase2,random uniform,10000000,PGM,4,levels,4
+phase2,random uniform,10000000,PGM,4,index_bytes,4323552
+phase2,random uniform,10000000,PGM,4,keys_bytes,80000000
+phase2,random uniform,10000000,PGM,4,ns_per_lookup,402.7
+phase2,random uniform,10000000,PGM,16,segments,14005
+phase2,random uniform,10000000,PGM,16,levels,3
+phase2,random uniform,10000000,PGM,16,index_bytes,337320
+phase2,random uniform,10000000,PGM,16,keys_bytes,80000000
+phase2,random uniform,10000000,PGM,16,ns_per_lookup,312.0
+phase2,random uniform,10000000,PGM,64,segments,946
+phase2,random uniform,10000000,PGM,64,levels,2
+phase2,random uniform,10000000,PGM,64,index_bytes,23784
+phase2,random uniform,10000000,PGM,64,keys_bytes,80000000
+phase2,random uniform,10000000,PGM,64,ns_per_lookup,331.4
+phase2,bursty,10000000,binary search,,index_bytes,0
+phase2,bursty,10000000,binary search,,keys_bytes,80000000
+phase2,bursty,10000000,binary search,,ns_per_lookup,626.9
+phase2,bursty,10000000,PGM,4,segments,67136
+phase2,bursty,10000000,PGM,4,levels,4
+phase2,bursty,10000000,PGM,4,index_bytes,1696392
+phase2,bursty,10000000,PGM,4,keys_bytes,80000000
+phase2,bursty,10000000,PGM,4,ns_per_lookup,329.9
+phase2,bursty,10000000,PGM,16,segments,19946
+phase2,bursty,10000000,PGM,16,levels,3
+phase2,bursty,10000000,PGM,16,index_bytes,484512
+phase2,bursty,10000000,PGM,16,keys_bytes,80000000
+phase2,bursty,10000000,PGM,16,ns_per_lookup,276.2
+phase2,bursty,10000000,PGM,64,segments,15416
+phase2,bursty,10000000,PGM,64,levels,3
+phase2,bursty,10000000,PGM,64,index_bytes,371424
+phase2,bursty,10000000,PGM,64,keys_bytes,80000000
+phase2,bursty,10000000,PGM,64,ns_per_lookup,396.4
+phase3,bursty,1000000,(a) brute scan,,memory_bytes,9000000
+phase3,bursty,1000000,(a) brute scan,,bytes_per_record,9.00
+phase3,bursty,1000000,(a) brute scan,,ns_per_query_1type,1226733.3
+phase3,bursty,1000000,(a) brute scan,,ns_per_query_8types,1026397.0
+phase3,bursty,1000000,(a) brute scan,,queries,200
+phase3,bursty,1000000,(b) PGM + WT,16,memory_bytes,8992088
+phase3,bursty,1000000,(b) PGM + WT,16,bytes_per_record,8.99
+phase3,bursty,1000000,(b) PGM + WT,16,ns_per_query_1type,472.1
+phase3,bursty,1000000,(b) PGM + WT,16,ns_per_query_8types,465.2
+phase3,bursty,1000000,(b) PGM + WT,16,queries,1000000
+phase3,bursty,1000000,(c) bsearch + WT,,memory_bytes,8940704
+phase3,bursty,1000000,(c) bsearch + WT,,bytes_per_record,8.94
+phase3,bursty,1000000,(c) bsearch + WT,,ns_per_query_1type,573.6
+phase3,bursty,1000000,(c) bsearch + WT,,ns_per_query_8types,593.0
+phase3,bursty,1000000,(c) bsearch + WT,,queries,1000000
+phase3,bursty,1000000,(d) per-type lists,,memory_bytes,8000264
+phase3,bursty,1000000,(d) per-type lists,,bytes_per_record,8.00
+phase3,bursty,1000000,(d) per-type lists,,ns_per_query_1type,421.3
+phase3,bursty,1000000,(d) per-type lists,,ns_per_query_8types,3077.6
+phase3,bursty,1000000,(d) per-type lists,,queries,1000000
+phase3,bursty,10000000,(a) brute scan,,memory_bytes,90000000
+phase3,bursty,10000000,(a) brute scan,,bytes_per_record,9.00
+phase3,bursty,10000000,(a) brute scan,,ns_per_query_1type,11598974.2
+phase3,bursty,10000000,(a) brute scan,,ns_per_query_8types,12746087.5
+phase3,bursty,10000000,(a) brute scan,,queries,20
+phase3,bursty,10000000,(b) PGM + WT,16,memory_bytes,89862704
+phase3,bursty,10000000,(b) PGM + WT,16,bytes_per_record,8.99
+phase3,bursty,10000000,(b) PGM + WT,16,ns_per_query_1type,1424.0
+phase3,bursty,10000000,(b) PGM + WT,16,ns_per_query_8types,1053.0
+phase3,bursty,10000000,(b) PGM + WT,16,queries,1000000
+phase3,bursty,10000000,(c) bsearch + WT,,memory_bytes,89378192
+phase3,bursty,10000000,(c) bsearch + WT,,bytes_per_record,8.94
+phase3,bursty,10000000,(c) bsearch + WT,,ns_per_query_1type,1604.6
+phase3,bursty,10000000,(c) bsearch + WT,,ns_per_query_8types,1523.7
+phase3,bursty,10000000,(c) bsearch + WT,,queries,1000000
+phase3,bursty,10000000,(d) per-type lists,,memory_bytes,80000264
+phase3,bursty,10000000,(d) per-type lists,,bytes_per_record,8.00
+phase3,bursty,10000000,(d) per-type lists,,ns_per_query_1type,992.9
+phase3,bursty,10000000,(d) per-type lists,,ns_per_query_8types,7302.1
+phase3,bursty,10000000,(d) per-type lists,,queries,1000000

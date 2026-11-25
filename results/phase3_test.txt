@@ -1,0 +1,10 @@
+make: Entering directory '/home/adit/projects/DSA_EL/phase3'
+gcc -std=c11 -Wall -Wextra -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=undefined -o build/test test.c -lm
+./build/test
+n=1                                  ok
+random, 8 types, duplicate times     ok
+random, 32 types                     ok
+bursty generator                     ok
+
+24093 checks, 0 failures
+make: Leaving directory '/home/adit/projects/DSA_EL/phase3'

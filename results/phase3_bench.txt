@@ -1,0 +1,25 @@
+make: Entering directory '/home/adit/projects/DSA_EL/phase3'
+gcc -std=c11 -Wall -Wextra -O2 -mpopcnt -o build/bench bench.c -lm
+./build/bench
+n = 1000000 (bursty), PGM eps = 16
+method                 memory(B)  B/record  1 type ns/q 8 types ns/q   queries
+(a) brute scan           9000000      9.00    1226733.3    1026397.0       200
+(b) PGM + WT             8992088      8.99        472.1        465.2   1000000
+(c) bsearch + WT         8940704      8.94        573.6        593.0   1000000
+(d) per-type lists       8000264      8.00        421.3       3077.6   1000000
+answers of all four methods match
+
+n = 10000000 (bursty), PGM eps = 16
+method                 memory(B)  B/record  1 type ns/q 8 types ns/q   queries
+(a) brute scan          90000000      9.00   11598974.2   12746087.5        20
+(b) PGM + WT            89862704      8.99       1424.0       1053.0   1000000
+(c) bsearch + WT        89378192      8.94       1604.6       1523.7   1000000
+(d) per-type lists      80000264      8.00        992.9       7302.1   1000000
+answers of all four methods match
+
+memory = timestamps (8 B each) + what the method adds.
+(a) also stores types (1 B each); (b),(c) store types in the wavelet tree;
+(d) stores timestamps split by type; it cannot tell the type of record i
+    (access) without also keeping the types array (+1 B/record).
+ns/q = median of 5 runs.
+make: Leaving directory '/home/adit/projects/DSA_EL/phase3'

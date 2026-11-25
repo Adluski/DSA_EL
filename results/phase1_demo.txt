@@ -1,0 +1,42 @@
+make: Entering directory '/home/adit/projects/DSA_EL/phase1'
+mkdir -p build
+gcc -std=c11 -Wall -Wextra -O2 -o build/demo demo.c
+./build/demo
+position:  0  1  2  3  4  5  6  7  8  9 10 11 
+symbol:    3  1  4  1  5  2  6  5  3  5  0  7 
+
+[0,7] symbols: 3 1 4 1 5 2 6 5 3 5 0 7
+       bits:   0 0 1 0 1 0 1 1 0 1 0 1   (0 = 0..3 go left, 1 = 4..7 go right)
+    [0,3] symbols: 3 1 1 2 3 0
+           bits:   1 0 0 1 1 0   (0 = 0..1 go left, 1 = 2..3 go right)
+        [0,1] symbols: 1 1 0
+               bits:   1 1 0   (0 = 0..0 go left, 1 = 1..1 go right)
+            [0,0] symbols: 0   (leaf)
+            [1,1] symbols: 1 1   (leaf)
+        [2,3] symbols: 3 2 3
+               bits:   1 0 1   (0 = 2..2 go left, 1 = 3..3 go right)
+            [2,2] symbols: 2   (leaf)
+            [3,3] symbols: 3 3   (leaf)
+    [4,7] symbols: 4 5 6 5 5 7
+           bits:   0 0 1 0 0 1   (0 = 4..5 go left, 1 = 6..7 go right)
+        [4,5] symbols: 4 5 5 5
+               bits:   0 1 1 1   (0 = 4..4 go left, 1 = 5..5 go right)
+            [4,4] symbols: 4   (leaf)
+            [5,5] symbols: 5 5 5   (leaf)
+        [6,7] symbols: 6 7
+               bits:   0 1   (0 = 6..6 go left, 1 = 7..7 go right)
+            [6,6] symbols: 6   (leaf)
+            [7,7] symbols: 7   (leaf)
+
+queries (positions start at 0, ranges are [l, r)):
+access(4)       = 5
+access(10)      = 0
+rank(5, 10)     = 3   (5s in positions 0..9)
+rank(1, 3)      = 1   (1s in positions 0..2)
+rank(7, 12)     = 1
+select(5, 2)    = 7   (2nd 5)
+select(1, 2)    = 3   (2nd 1)
+select(6, 2)    = -1  (there is only one 6)
+count(5, 5, 10) = 2   (5s in positions 5..9)
+count(3, 0, 12) = 2
+make: Leaving directory '/home/adit/projects/DSA_EL/phase1'

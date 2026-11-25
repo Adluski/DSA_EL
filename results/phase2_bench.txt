@@ -1,0 +1,44 @@
+make: Entering directory '/home/adit/projects/DSA_EL/phase2'
+gcc -std=c11 -Wall -Wextra -O2 -o build/bench_pgm bench_pgm.c -lm
+./build/bench_pgm
+dataset         n         method          segments  levels    index(B)      keys(B)  ns/lookup
+evenly spaced   1000000   binary search          -       -           0      8000000      168.5
+evenly spaced   1000000   PGM eps=4              1       1        1080      8000000       15.6
+evenly spaced   1000000   PGM eps=16             1       1        1080      8000000       17.8
+evenly spaced   1000000   PGM eps=64             1       1        1080      8000000       19.0
+answers of PGM (all eps) and binary search match
+
+random uniform  1000000   binary search          -       -           0      8000000      201.3
+random uniform  1000000   PGM eps=4          17792       3      430632      8000000      143.0
+random uniform  1000000   PGM eps=16          1411       2       34944      8000000      104.8
+random uniform  1000000   PGM eps=64            92       2        3288      8000000      134.0
+answers of PGM (all eps) and binary search match
+
+bursty          1000000   binary search          -       -           0      8000000      293.8
+bursty          1000000   PGM eps=4           6775       4      172128      8000000      232.3
+bursty          1000000   PGM eps=16          2072       3       51384      8000000      235.8
+bursty          1000000   PGM eps=64          1613       2       39792      8000000      223.2
+answers of PGM (all eps) and binary search match
+
+evenly spaced   10000000  binary search          -       -           0     80000000      656.2
+evenly spaced   10000000  PGM eps=4              1       1        1080     80000000       72.5
+evenly spaced   10000000  PGM eps=16             1       1        1080     80000000       78.0
+evenly spaced   10000000  PGM eps=64             1       1        1080     80000000      119.4
+answers of PGM (all eps) and binary search match
+
+random uniform  10000000  binary search          -       -           0     80000000      708.7
+random uniform  10000000  PGM eps=4         179079       4     4323552     80000000      402.7
+random uniform  10000000  PGM eps=16         14005       3      337320     80000000      312.0
+random uniform  10000000  PGM eps=64           946       2       23784     80000000      331.4
+answers of PGM (all eps) and binary search match
+
+bursty          10000000  binary search          -       -           0     80000000      626.9
+bursty          10000000  PGM eps=4          67136       4     1696392     80000000      329.9
+bursty          10000000  PGM eps=16         19946       3      484512     80000000      276.2
+bursty          10000000  PGM eps=64         15416       3      371424     80000000      396.4
+answers of PGM (all eps) and binary search match
+
+index(B) = memory of the index alone; both methods also need keys(B).
+segments = segments in the bottom level.
+ns/lookup = median of 5 runs of 1000000 lookups.
+make: Leaving directory '/home/adit/projects/DSA_EL/phase2'

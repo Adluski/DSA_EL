@@ -1,0 +1,37 @@
+make: Entering directory '/home/adit/projects/DSA_EL/phase2'
+mkdir -p build
+gcc -std=c11 -Wall -Wextra -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=undefined -o build/test_pgm test_pgm.c -lm
+./build/test_pgm
+n=1                                eps=4   segments=1       levels=1  ok
+n=1                                eps=16  segments=1       levels=1  ok
+n=1                                eps=64  segments=1       levels=1  ok
+n=2 duplicate                      eps=4   segments=1       levels=1  ok
+n=2 duplicate                      eps=16  segments=1       levels=1  ok
+n=2 duplicate                      eps=64  segments=1       levels=1  ok
+1000 equal keys                    eps=4   segments=1       levels=1  ok
+1000 equal keys                    eps=16  segments=1       levels=1  ok
+1000 equal keys                    eps=64  segments=1       levels=1  ok
+duplicate run then a gap           eps=4   segments=2       levels=2  ok
+duplicate run then a gap           eps=16  segments=2       levels=2  ok
+duplicate run then a gap           eps=64  segments=2       levels=2  ok
+random, many duplicates            eps=4   segments=137     levels=2  ok
+random, many duplicates            eps=16  segments=18      levels=2  ok
+random, many duplicates            eps=64  segments=1       levels=1  ok
+20 values, long duplicate runs     eps=4   segments=20      levels=2  ok
+20 values, long duplicate runs     eps=16  segments=20      levels=2  ok
+20 values, long duplicate runs     eps=64  segments=20      levels=2  ok
+random uniform                     eps=4   segments=1768    levels=3  ok
+random uniform                     eps=16  segments=141     levels=2  ok
+random uniform                     eps=64  segments=10      levels=2  ok
+evenly spaced                      eps=4   segments=1       levels=1  ok
+evenly spaced                      eps=16  segments=1       levels=1  ok
+evenly spaced                      eps=64  segments=1       levels=1  ok
+near UINT64_MAX                    eps=4   segments=184     levels=3  ok
+near UINT64_MAX                    eps=16  segments=16      levels=2  ok
+near UINT64_MAX                    eps=64  segments=2       levels=2  ok
+bursty generator                   eps=4   segments=1359    levels=4  ok
+bursty generator                   eps=16  segments=398     levels=3  ok
+bursty generator                   eps=64  segments=302     levels=2  ok
+
+5235501 checks, 0 failures
+make: Leaving directory '/home/adit/projects/DSA_EL/phase2'

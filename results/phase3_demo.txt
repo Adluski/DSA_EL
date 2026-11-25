@@ -1,0 +1,39 @@
+make: Entering directory '/home/adit/projects/DSA_EL/phase3'
+mkdir -p build
+gcc -std=c11 -Wall -Wextra -O2 -o build/demo demo.c -lm
+./build/demo
+pos  time  type
+  0   100     3
+  1   102     5
+  2   105     3
+  3   107     5
+  4   300     1
+  5   310     2
+  6   600     5
+  7   601     5
+  8   603     7
+  9   604     3
+ 10   900     0
+ 11  1000     5
+
+query 1: type 5..5, time 100..310
+  PGM: first time >= 100 is at l = 0, first time > 310 is at r = 6
+  types at positions [0, 6): 3 5 3 5 1 2
+  wavelet tree count = 2
+
+query 2: type 5..5, time 301..650
+  PGM: first time >= 301 is at l = 5, first time > 650 is at r = 10
+  types at positions [5, 10): 2 5 5 7 3
+  wavelet tree count = 2
+
+query 3: type 3..5, time 105..604
+  PGM: first time >= 105 is at l = 2, first time > 604 is at r = 10
+  types at positions [2, 10): 3 5 1 2 5 5 7 3
+  wavelet tree count = 5
+
+query 4: first event of type 7 at time >= 200
+  PGM: first time >= 200 is at p = 4
+  rank(7, 4) = 0 earlier type-7 events, so we want occurrence 1
+  select(7, 1) = position 8
+  answer: time 603
+make: Leaving directory '/home/adit/projects/DSA_EL/phase3'
